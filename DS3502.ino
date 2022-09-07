@@ -66,10 +66,10 @@ uint8_t Read_DS3502(uint32_t address){
 }
 
 uint8_t setGain(float x, float y){
-  L_tmp = (uint8_t)(120 * x / (float)ROOM_L); //* (3 - y) / (float)ROOM_H) + 7; 
-  R_tmp = (uint8_t)(120 * ((float)ROOM_L - x) / (float)ROOM_L); // * (3 - y) / (float)ROOM_H) + 7;
-  control_data_str.Lch_wiper_position = (uint8_t)(L_tmp * (-0.2 * y + 1));
-  control_data_str.Rch_wiper_position = (uint8_t)(R_tmp * (-0.2 * y + 1));
+  L_tmp = (uint8_t)(127 * pow(x, 1.5) / pow((float)ROOM_L, 1.5)); //* (3 - y) / (float)ROOM_H) + 7; 
+  R_tmp = (uint8_t)(127 * pow(((float)ROOM_L - x), 1.5) / pow((float)ROOM_L, 1.5)); // * (3 - y) / (float)ROOM_H) + 7;
+  control_data_str.Lch_wiper_position = (uint8_t)L_tmp; 
+  control_data_str.Rch_wiper_position = (uint8_t)R_tmp; 
 }
 
 
