@@ -34,10 +34,10 @@ struct control_data_str{
 }control_data_str;
 
 const float ROOM_H = 3.0;
-const float ROOM_L = 3.0;
+const float ROOM_L = 2.0;
 const float RESET_DISTANCE = 10;
 
-double x = 3.0;
+double x = 1.5;
 double y = 0;
 uint32_t timer;
 double diff_x, diff_y;
@@ -105,7 +105,7 @@ void loop() {
     // }
 
     //if (fabs(control_data_str.yaw_data) < 10 && fabs(control_data_str.pitch_data) < 10 && fabs(control_data_str.roll_data) < 10){
-    x = (double)control_data_str.distance_raw / 1000;
+    x = (double)control_data_str.distance_raw / 1000 - 1.0;
     //}
     
     if (diff_y > walk_y){
